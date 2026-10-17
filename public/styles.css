@@ -1,0 +1,329 @@
+/* 1. Local fonts */
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter_24pt-Regular.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  src: url("/assets/fonts/SpaceMono-Bold.ttf")
+    format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+
+/* 2. Design tokens */
+
+:root {
+  color-scheme: dark;
+
+  --color-background: #000000;
+  --color-text: #ffffff;
+  --color-muted: #b3b3b3;
+
+  --font-primary: "Inter", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --page-padding-x: 48px;
+  --page-padding-y: 32px;
+
+  --wordmark-height: 32px;
+
+  --animation-cycle: 4.5s;
+  --character-stagger: 0.075s;
+}
+
+
+/* 3. Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--color-background);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+
+  background: var(--color-background);
+  color: var(--color-text);
+
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+h1 {
+  margin: 0;
+}
+
+
+/* 4. Main page layout */
+
+.page {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  padding:
+    var(--page-padding-y)
+    var(--page-padding-x);
+
+  background: var(--color-background);
+}
+
+
+/* 5. Header */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.brand__wordmark {
+  display: block;
+
+  width: auto;
+  height: var(--wordmark-height);
+  max-width: min(180px, 45vw);
+
+  object-fit: contain;
+  object-position: left center;
+}
+
+
+/* 6. Center content */
+
+.main-content {
+  display: flex;
+  flex: 1 0 auto;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding-block: 64px;
+}
+
+.coming-soon {
+  width: 100%;
+  text-align: center;
+}
+
+
+/* 7. Coming soon heading */
+
+.coming-soon__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+
+  width: 100%;
+  margin: 0;
+
+  font-family: var(--font-mono);
+  font-size: clamp(24px, 5.2vw, 68px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0;
+
+  color: var(--color-text);
+  white-space: nowrap;
+
+  perspective: 700px;
+}
+
+
+/* 8. Individual character animation */
+
+.flip-char {
+  display: inline-block;
+  flex: 0 1 auto;
+
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+
+  animation:
+    character-backflip
+    var(--animation-cycle)
+    ease-in-out
+    infinite;
+
+  animation-delay:
+    calc(
+      var(--char-index, 0) *
+      var(--character-stagger)
+    );
+}
+
+.flip-space {
+  display: inline-block;
+  width: 0.38em;
+  flex-shrink: 0;
+}
+
+@keyframes character-backflip {
+  0%,
+  12%,
+  100% {
+    transform: rotateX(0deg);
+  }
+
+  18% {
+    transform: rotateX(360deg);
+  }
+
+  24% {
+    transform: rotateX(360deg);
+  }
+}
+
+
+/* 9. Cooking message */
+
+.coming-soon__message {
+  margin-top: clamp(16px, 2.2vw, 28px);
+
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: clamp(12px, 1.6vw, 18px);
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0;
+
+  text-align: center;
+}
+
+
+/* 10. Footer */
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  width: 100%;
+  padding-top: 24px;
+
+  text-align: center;
+}
+
+.site-footer p {
+  color: var(--color-muted);
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+
+/* 11. Keyboard accessibility */
+
+.brand:focus-visible {
+  outline: 1px solid var(--color-text);
+  outline-offset: 6px;
+}
+
+
+/* 12. Tablet */
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding-x: 28px;
+    --page-padding-y: 26px;
+    --wordmark-height: 28px;
+  }
+
+  .main-content {
+    padding-block: 48px;
+  }
+
+  .coming-soon__title {
+    font-size: clamp(24px, 5.2vw, 40px);
+  }
+
+  .coming-soon__message {
+    font-size: clamp(12px, 2.2vw, 16px);
+  }
+}
+
+
+/* 13. Small mobile */
+
+@media (max-width: 420px) {
+  :root {
+    --page-padding-x: 20px;
+    --page-padding-y: 22px;
+    --wordmark-height: 26px;
+  }
+
+  .coming-soon__title {
+    font-size: clamp(22px, 6.5vw, 27px);
+    letter-spacing: -0.02em;
+  }
+
+  .coming-soon__message {
+    font-size: clamp(11px, 3.2vw, 13px);
+  }
+
+  .site-footer p {
+    font-size: 11px;
+  }
+}
+
+
+/* 14. Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-char {
+    animation: none;
+    transform: none;
+  }
+}

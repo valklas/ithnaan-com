@@ -1,23 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <meta name="description" content="Ithnaan — Something new is coming soon.">
-
-    <meta name="theme-color" content="#000000">
-
-    <link rel="icon" href="/assets/logo/icon.svg" type="image/svg+xml">
-
-    <link rel="stylesheet" href="/style.css">
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="Ithnaan is preparing something. Coming soon."/>
 
     <title>Ithnaan — Coming Soon</title>
-</head>
 
-<body>
-    <main>
-        <h1>COMING SOON</h1>
-    </main>
-</body>
+    <link rel="icon" href="/assets/logos/icon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="/styles.css"/>
+    <script src="/script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="Ithnaan home">
+          <img class="brand__wordmark" src="/assets/logos/wordmark.svg" alt="Ithnaan" width="160" height="40"/>
+        </a>
+      </header>
+
+      <main class="main-content">
+        <section class="coming-soon" aria-labelledby="coming-soon-title">
+          <h1 class="coming-soon__title" id="coming-soon-title" data-animate-characters>COMING SOON</h1>
+
+          <p class="coming-soon__message">Cooking site, please wait!</p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p><span aria-hidden="true">&copy;</span>Ithnaan 2026. All rights reserved.</p>
+      </footer>
+    </div>
+  </body>
 </html>
