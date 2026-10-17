@@ -26,13 +26,13 @@
 
   --color-background: #000000;
   --color-text: #ffffff;
-  --color-muted: #b3b3b3;
+  --color-muted: #a3a3a3;
 
   --font-primary: "Inter", sans-serif;
   --font-mono: "Space Mono", monospace;
 
-  --page-padding-x: 48px;
-  --page-padding-y: 32px;
+  --page-padding-x: clamp(20px, 5vw, 48px);
+  --page-padding-y: clamp(22px, 4vh, 32px);
 
   --wordmark-height: 32px;
 
@@ -53,6 +53,7 @@ html {
   min-width: 320px;
   min-height: 100%;
   background: var(--color-background);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -65,7 +66,7 @@ body {
   color: var(--color-text);
 
   font-family: var(--font-primary);
-  font-size: 16px;
+  font-size: 1rem; /* 16px base */
   font-weight: 400;
   line-height: 1.5;
 
@@ -76,6 +77,7 @@ body {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -146,7 +148,7 @@ h1 {
   justify-content: center;
 
   width: 100%;
-  padding-block: 64px;
+  padding-block: clamp(32px, 8vh, 64px);
 }
 
 .coming-soon {
@@ -155,7 +157,7 @@ h1 {
 }
 
 
-/* 7. Coming soon heading */
+/* 7. Coming soon heading (Primary Focal Point) */
 
 .coming-soon__title {
   display: flex;
@@ -167,10 +169,11 @@ h1 {
   margin: 0;
 
   font-family: var(--font-mono);
-  font-size: clamp(24px, 5.2vw, 68px);
+  /* Substantially larger fluid heading: min 36px, desktop up to 96px */
+  font-size: clamp(2.25rem, 8.5vw, 6rem);
   font-weight: 700;
-  line-height: 1.35;
-  letter-spacing: 0;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
 
   color: var(--color-text);
   white-space: nowrap;
@@ -225,17 +228,18 @@ h1 {
 }
 
 
-/* 9. Cooking message */
+/* 9. Cooking message (Secondary Information) */
 
 .coming-soon__message {
-  margin-top: clamp(16px, 2.2vw, 28px);
+  margin-top: clamp(1.25rem, 3vw, 2.25rem);
 
-  color: var(--color-text);
+  color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: clamp(12px, 1.6vw, 18px);
+  /* Significantly smaller than title to create strict visual hierarchy */
+  font-size: clamp(0.875rem, 1.8vw, 1.25rem);
   font-weight: 400;
-  line-height: 1.8;
-  letter-spacing: 0;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
 
   text-align: center;
 }
@@ -258,9 +262,9 @@ h1 {
 .site-footer p {
   color: var(--color-muted);
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: 0.8125rem; /* 13px */
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 
@@ -272,54 +276,22 @@ h1 {
 }
 
 
-/* 12. Tablet */
+/* 12. Responsive Breakpoints */
 
 @media (max-width: 768px) {
   :root {
-    --page-padding-x: 28px;
-    --page-padding-y: 26px;
     --wordmark-height: 28px;
   }
-
-  .main-content {
-    padding-block: 48px;
-  }
-
-  .coming-soon__title {
-    font-size: clamp(24px, 5.2vw, 40px);
-  }
-
-  .coming-soon__message {
-    font-size: clamp(12px, 2.2vw, 16px);
-  }
 }
 
-
-/* 13. Small mobile */
-
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   :root {
-    --page-padding-x: 20px;
-    --page-padding-y: 22px;
-    --wordmark-height: 26px;
-  }
-
-  .coming-soon__title {
-    font-size: clamp(22px, 6.5vw, 27px);
-    letter-spacing: -0.02em;
-  }
-
-  .coming-soon__message {
-    font-size: clamp(11px, 3.2vw, 13px);
-  }
-
-  .site-footer p {
-    font-size: 11px;
+    --wordmark-height: 24px;
   }
 }
 
 
-/* 14. Reduced motion */
+/* 13. Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
   .flip-char {
