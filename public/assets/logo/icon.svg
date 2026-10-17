@@ -1,7 +1,0 @@
-<svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="1000" height="1000" fill="black"/>
-<rect x="305" y="225" width="130" height="550" fill="white"/>
-<path d="M435 225H305V290L435 225Z" fill="black"/>
-<rect x="565" y="225" width="130" height="550" fill="white"/>
-<path d="M565 225H695V290L565 225Z" fill="black"/>
-</svg>
